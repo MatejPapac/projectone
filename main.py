@@ -1,6 +1,7 @@
 from src.projectone import logger
 from src.projectone.pipeline.data_ingestion_pipeline import DataIngestionTrainingPipeline
 from src.projectone.pipeline.data_validation_pipeline import DataValidationTrainingPipeline
+from src.projectone.pipeline.data_transformation_pipeline import DataTransformationTrainingPipeline
 
 STAGE_NAME = 'Data Ingestion stage'
 
@@ -24,4 +25,17 @@ try:
 except Exception as e:
         logger.exception(e)
         raise e
+
+STAGE_NAME = 'Data Transformation stage'
+
+try:
+        logger.info(f'>>>> stage {STAGE_NAME} started <<<<')
+        obj = DataTransformationTrainingPipeline()
+        obj.initiate_data_transformation() 
+        logger.info(f'>>>> stage {STAGE_NAME} completed <<<< \n\nx=======x')
+except Exception as e:
+        logger.exception(e)
+        raise e
+
+
 
